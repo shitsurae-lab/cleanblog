@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html <?php language_attributes(); ?>>
 
 <head>
   <?php get_header(); ?>
 </head>
 
-<body>
+<body <?php body_class(); ?>>
+
   <?php get_template_part('includes/header'); ?>
 
   <!-- 念の為 バグ回避 if -->
@@ -26,7 +27,8 @@
       endif;
       ?>
 
-      <?php var_dump($img) ?>
+      <?php //var_dump($img)
+      ?>
       <header class="masthead" style="background-image: url('<?php echo $img[0]; ?>')">
         <div class="overlay"></div>
         <div class="container">
