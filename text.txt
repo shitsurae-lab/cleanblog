@@ -1,8 +1,0 @@
-have posts()について
-if構文とwhile構文に出てくる
-
-結果があるかどうかをチェックする(the_postしたあとは残りをチェックすることになる)
-
-the_post(); ループを次の投稿にすすめる
-
-have_postsはthe_postと使うと効果的
