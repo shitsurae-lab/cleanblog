@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html <?php language_attributes(); ?>>
 
 <head>
   <?php get_header(); ?>
 </head>
 
-<body>
+<body <?php body_class(); ?>>
   <!-- Navigation -->
   <?php get_template_part('includes/header') ?>
   <!-- Page Header -->
@@ -15,8 +15,8 @@
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           <div class="site-heading">
-            <h1>Clean Blog<?php echo date('n'); ?></h1>
-            <span class="subheading">A Blog Theme by Start Bootstrap</span>
+            <h1><?php bloginfo(); ?></h1>
+            <span class="subheading"><?php bloginfo('description'); ?></span>
           </div>
         </div>
       </div>
@@ -49,7 +49,20 @@
           <?php endwhile; ?>
           <!-- Pager -->
           <div class="clearfix">
-            <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
+            <?php
+            $link = get_previous_posts_link('新しい記事へ &larr;');
+            if ($link) { //この場合のif($link)は$linkになにかが入っている場合という意味
+              $link = str_replace('<a', '<a class="btn btn-primary float-left"', $link);
+              echo $link;
+            }
+            ?>
+            <?php
+            $link = get_next_posts_link('古い記事へ &rarr;');
+            if ($link) { //この場合のif($link)は$linkになにかが入っている場合という意味
+              $link = str_replace('<a', '<a class="btn btn-primary float-right"', $link);
+              echo $link;
+            }
+            ?>
           </div>
         <?php else : ?>
           <p>記事が見つかりませんでした</p>
